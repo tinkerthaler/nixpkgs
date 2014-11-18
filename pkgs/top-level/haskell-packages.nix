@@ -1594,6 +1594,10 @@ self : let callPackage = x : y : modifyPrio (newScope self x y); in
 
   leveldbHaskell = callPackage ../development/libraries/haskell/leveldb-haskell {};
 
+  libarchiveConduit = callPackage ../development/libraries/haskell/libarchive-conduit {
+    archive = pkgs.libarchive;
+  };
+
   libffi = callPackage ../development/libraries/haskell/libffi {
     libffi = pkgs.libffi;
   };
