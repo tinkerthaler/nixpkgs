@@ -46,7 +46,7 @@ stdenv.mkDerivation rec {
 
   patches =
     optional gtkStyle
-      (substituteAll {
+    [ (substituteAll {
         src = ./0001-dlopen-gtkstyle.patch;
         # substituteAll ignores env vars starting with capital letter
         gconf = GConf;
