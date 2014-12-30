@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
     [ "-DCMAKE_INSTALL_LIBDIR=lib"
     ] ++ optional withQt5 "-DPHONON_BUILD_PHONON4QT5=ON";
 
-  meta = {
+  meta = with stdenv.lib; {
     homepage = http://phonon.kde.org/;
     description = "GStreamer backend for Phonon";
     platforms = platforms.linux;
