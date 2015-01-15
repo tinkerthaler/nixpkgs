@@ -106,13 +106,13 @@ in
   };
 
   renameDeps = nameMap: pkg:
-    let lookupNames = map (name: nameMap."${name}" or name);
-    in pkg // {
-      buildInputs = lookupNames pkg.buildInputs;
-      nativeBuildInputs = lookupNames pkg.nativeBuildInputs;
-      propagatedBuildInputs = lookupNames pkg.propagatedBuildInputs;
-      propagatedNativeBuildInputs = lookupNames pkg.propagatedNativeBuildInputs;
-      propagatedUserEnvPkgs = lookupNames pkg.propagatedUserEnvPkgs;
-    };
+    let lookupNames = map (name: nameMap."${name}" or name); in
+    mapAttrs (name: val: if isDepAttr name then lookupNames val else val) pkg;
+
+  userEnvPkg = dep: pkg:
+    let addDep = {
+          propagatedUserEnvPkgs = pkg.propagatedUserEnvPkgs ++ [dep];
+        };
+    in if hasDep dep pkg then pkg // addDep else pkg;
 
 }
