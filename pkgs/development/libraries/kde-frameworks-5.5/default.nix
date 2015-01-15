@@ -6,9 +6,16 @@ let
 
   kf5 = generateCollection ./. {
     mirror = "mirror://kde";
-    inherit overrider resolver;
+    inherit overrider resolver rewriter;
     deriver = name: stdenv.mkDerivation;
   };
+
+  rewriter = name: pkg:
+    fold (f: x: f x) pkg
+    [
+      (userEnvPkg "sharedmimeinfo")
+      (userEnvPkg "shareddesktopontologies")
+    ];
 
   overrider = name: attrs:
     (mergeAttrsByFuncDefaultsClean
@@ -139,6 +146,7 @@ let
       qt5core = qt5;
       qt5dbus = qt5;
       qt5gui = qt5;
+      shareddesktopontologies = pkgs.shared_desktop_ontologies;
       sharedmimeinfo = pkgs.shared_mime_info;
       xcb = pkgs.xlibs.xcbproto;
     }

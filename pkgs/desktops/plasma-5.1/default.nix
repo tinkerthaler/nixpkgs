@@ -34,25 +34,25 @@ let
     ];
 
   rewriter = name: pkg:
-    renameDeps
-      {
-        kde4 = "kdelibs";
-        fontforge_executable = "fontforge";
-      }
-      (
+    fold (f: x: f x) pkg
+    [
+      (renameDeps
+        {
+          kde4 = "kdelibs";
+          fontforge_executable = "fontforge";
+        }
+      )
+      (pkg:
         {
           # breeze-qt4 cannot handle being built with any Qt 5 bits around
-          breeze-qt4 = pkg // {
-            buildInputs = [];
-            nativeBuildInputs = [];
-            propagatedBuildInputs = [];
-            propagatedNativeBuildInputs = [];
-            propagatedUserEnvPkgs = [];
-          };
+          breeze-qt4 = pkg // emptyDeps;
           libmm-qt = removePkgDeps qt4Deps pkg;
           libnm-qt = removePkgDeps qt4Deps pkg;
         }."${name}" or pkg
-      );
+      )
+      (userEnvPkg "sharedmimeinfo")
+      (userEnvPkg "shareddesktopontologies")
+    ];
 
   kf5 = kf55.override { inherit debug; };
   scope = kf5.passthru.scope // plasma5;

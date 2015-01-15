@@ -58,6 +58,9 @@ let
             okular = qt4Only pkg;
           }."${name}" or pkg
         )
+
+        (userEnvPkg "sharedmimeinfo")
+        (userEnvPkg "shareddesktopontologies")
       ];
 
   kf5 = kf55.override { inherit debug; };
