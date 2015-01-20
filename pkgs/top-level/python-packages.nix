@@ -12848,4 +12848,19 @@ let
     };
   };
 
+  psycogreen = buildPythonPackage rec {
+    name = "psycogreen-1.0";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/p/psycogreen/psycogreen-1.0.tar.gz";
+      sha256 = "9acfa6cb5373bcf1eaf27c904d98d59c9f3bb0065cbb005f83ccc45055ace9a1";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Psycopg integration";
+      homepage = https://bitbucket.org/dvarrazzo/psycogreen;
+      license = licenses.bsd3;
+    };
+  };
+
 }); in pythonPackages
