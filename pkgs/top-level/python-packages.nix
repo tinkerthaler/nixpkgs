@@ -12801,4 +12801,51 @@ let
     };
   };
 
+  nose = buildPythonPackage rec {
+    name = "nose-1.3.4";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/n/nose/nose-1.3.4.tar.gz";
+      sha256 = "76bc63a4e2d5e5a0df77ca7d18f0f56e2c46cfb62b71103ba92a92c79fab1e03";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Unit test extension";
+      homepage = http://nose.readthedocs.org/en/latest;
+      license = licenses.lgpl21;
+    };
+  };
+
+  py-bcrypt = buildPythonPackage rec {
+    name = "py-bcrypt-0.4";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/p/py-bcrypt/py-bcrypt-0.4.tar.gz";
+      sha256 = "5fa13bce551468350d66c4883694850570f3da28d6866bb638ba44fe5eabda78";
+    };
+
+    meta = with stdenv.lib; {
+      description = "OpenBSD Blowfish password hashing";
+      homepage = https://code.google.com/p/py-bcrypt;
+      license = licenses.bsd3; #TODO verify license info: ISC/BSD (BSD original vs BSD-3?)
+    };
+  };
+
+  passlib = buildPythonPackage rec {
+    name = "passlib-1.6.2";
+
+    propagatedBuildInputs = with self; [ nose py-bcrypt ];
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/p/passlib/passlib-1.6.2.tar.gz";
+      sha256 = "e987f6000d16272f75314c7147eb015727e8532a3b747b1a8fb58e154c68392d";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Password hashing";
+      homepage = http://passlib.googlecode.com;
+      license = licenses.bsd2;
+    };
+  };
+
 }); in pythonPackages
