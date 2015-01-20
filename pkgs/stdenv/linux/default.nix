@@ -286,14 +286,7 @@ rec {
       ];
 
     overrides = pkgs: {
-<<<<<<< HEAD
-      inherit cc;
-
-      gcc = cc;
-
-=======
       inherit gcc;
->>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
       inherit (stage4.pkgs)
         gzip bzip2 xz bash binutils coreutils diffutils findutils gawk
         glibc gnumake gnused gnutar gnugrep gnupatch patchelf

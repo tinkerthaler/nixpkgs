@@ -27,13 +27,8 @@ let
 
     C_INCLUDE_PATH = stdenv.lib.concatStringsSep ":" (map (p: "${p}/include") buildInputs);
     LIBRARY_PATH = stdenv.lib.concatStringsSep ":" (map (p: "${p}/lib") buildInputs);
-<<<<<<< HEAD
-    LD_LIBRARY_PATH = stdenv.lib.concatStringsSep ":" (map (p: "${p}/lib")
-      (stdenv.lib.filter (x : x.outPath != stdenv.cc.libc.outPath or "") buildInputs));
-=======
     LD_LIBRARY_PATH = stdenv.lib.concatStringsSep ":" (map (p: "${p}/lib") 
       (stdenv.lib.filter (x : x.outPath != stdenv.gcc.libc.outPath or "") buildInputs));
->>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
 
     patches = [ ./fix-gcc-4-9-2.patch ];
 

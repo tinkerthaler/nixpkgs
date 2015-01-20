@@ -22,13 +22,8 @@ stdenv.mkDerivation {
     for prog in aldor unicl javagen ;
     do
       wrapProgram $out/bin/$prog --set ALDORROOT $out \
-<<<<<<< HEAD
-        --prefix PATH : ${jdk}/bin \
-        --prefix PATH : ${stdenv.cc}/bin ;
-=======
         --prefix PATH : ${openjdk}/bin \
         --prefix PATH : ${stdenv.gcc}/bin ;
->>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
     done
   '';
 

@@ -33,9 +33,3 @@ fi
 if [ -n "@coreutils@" ]; then
     addToSearchPath PATH @coreutils@/bin
 fi
-<<<<<<< HEAD
-
-export CC=cc
-export CXX=c++
-=======
->>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc

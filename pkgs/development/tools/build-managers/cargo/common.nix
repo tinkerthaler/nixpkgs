@@ -13,9 +13,6 @@
     then "x86_64-apple-darwin"
     else throw "no snapshot to bootstrap for this platform (missing platform url suffix)";
 
-<<<<<<< HEAD
-  meta = with stdenv.lib; {
-=======
   snapshotHash = if stdenv.system == "i686-linux"
     then "4dea04e278192c5409f43794a98f20a8f59df2d9"
     else if stdenv.system == "x86_64-linux"
@@ -47,7 +44,6 @@
   };
 
   meta = {
->>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
     homepage = http://crates.io;
     description = "Downloads your Rust project's dependencies and builds your project";
     license = [ licenses.mit licenses.asl20 ];

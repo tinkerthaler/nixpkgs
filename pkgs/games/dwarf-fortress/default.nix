@@ -51,13 +51,8 @@ stdenv.mkDerivation rec {
     # Store the original hash for dwarf-therapist 
     echo $(md5sum $out/share/df_linux/libs/Dwarf_Fortress | cut -c1-8) > $out/share/df_linux/hash.md5.orig
     # Fix rpath
-<<<<<<< HEAD
-    patchelf --set-rpath "${stdenv.lib.makeLibraryPath [ stdenv.cc.gcc stdenv.glibc ]}:$out/share/df_linux/libs"  $out/share/df_linux/libs/Dwarf_Fortress
-    cp -f ./${srcs.df_unfuck.name}/build/libgraphics.so $out/share/df_linux/libs/libgraphics.so
-=======
     patchelf --set-rpath "${stdenv.lib.makeLibraryPath [ stdenv.gcc.gcc stdenv.glibc ]}:$out/share/df_linux/libs"  $out/share/df_linux/libs/Dwarf_Fortress
     cp -f ./git-export/build/libgraphics.so $out/share/df_linux/libs/libgraphics.so
->>>>>>> parent of 05edd65... Missed gcc refs
 
     cp $permission $out/share/df_linux/nix_permission
 

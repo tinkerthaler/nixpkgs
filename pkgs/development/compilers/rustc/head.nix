@@ -2,11 +2,7 @@
 , tzdata, git, valgrind, procps, coreutils
 }:
 
-<<<<<<< HEAD
-assert !stdenv.isFreeBSD;
-=======
 assert stdenv.gcc.gcc != null;
->>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
 
 /* Rust's build process has a few quirks :
 

@@ -17,21 +17,9 @@ stdenv.mkDerivation rec {
   buildInputs = [ python bzip2 zlib gmp openssl boost ];
 
   configurePhase = ''
-<<<<<<< HEAD
-    python configure.py --prefix=$out --with-gnump --with-bzip2 --with-zlib ${if openssl != null then "--with-openssl" else ""}
-  '';
-
-  enableParallelBuilding = true;
-
-  preInstall = ''
-    patchShebangs src/scripts
-  '';
-
-=======
     python configure.py --prefix=$out --with-gnump --with-bzip2 --with-zlib --with-openssl
   '';
 
->>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
   postInstall = ''
     cd "$out"/lib/pkgconfig
     ln -s botan-*.pc botan.pc || true
