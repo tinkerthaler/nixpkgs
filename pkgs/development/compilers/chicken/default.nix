@@ -53,7 +53,7 @@ stdenv.mkDerivation {
     for f in $out/bin/*
     do
       wrapProgram $f \
-        --prefix PATH : ${stdenv.cc}/bin
+        --prefix PATH : ${stdenv.gcc}/bin
     done
   '';
 

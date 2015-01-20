@@ -80,6 +80,15 @@ stdenv.mkDerivation {
 
   installPhase = ''
     export CC=cc
+<<<<<<< HEAD
+=======
+  '' + stdenv.lib.optionalString (stdenv ? gcc) ''
+    # http://lists.science.uu.nl/pipermail/nix-dev/2013-October/011891.html
+    # Fix for "libgcc_s.so.1 must be installed for pthread_cancel to work"
+    # during tests:
+    export LD_LIBRARY_PATH="$(dirname $(echo ${stdenv.cc.gcc}/lib/libgcc_s.so))"
+  '' + ''
+>>>>>>> parent of 05edd65... Missed gcc refs
     mkdir -p "$out/bin"
     export GOROOT="$(pwd)/"
     export GOBIN="$out/bin"

@@ -66,7 +66,7 @@ stdenv.mkDerivation rec {
       ./0003-glib-2.32.patch
       (substituteAll {
         src = ./0004-dlopen-resolv.patch;
-        glibc = stdenv.cc.libc;
+        glibc = stdenv.gcc.libc;
       })
       (substituteAll {
         src = ./0005-dlopen-gl.patch;
