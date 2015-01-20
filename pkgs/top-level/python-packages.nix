@@ -12786,4 +12786,19 @@ let
     };
   };
 
+  jcconv = buildPythonPackage rec {
+    name = "jcconv-0.2.3";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/j/jcconv/jcconv-0.2.3.tar.gz";
+      sha256 = "e3bd59d3fb129b952f84c66e6187abddb88cc7c2b3c83b12685a3256fd3b5e54";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Japanese Character Converter";
+      homepage = http://github.com/taichino/jcconv;
+      license = licenses.mit;
+    };
+  };
+
 }); in pythonPackages
