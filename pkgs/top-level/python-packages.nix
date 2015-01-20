@@ -12863,4 +12863,19 @@ let
     };
   };
 
+  pyPdf = buildPythonPackage rec {
+    name = "pyPdf-1.13";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/p/pyPdf/pyPdf-1.13.tar.gz";
+      sha256 = "3aede4c3c9c6ad07c98f059f90db0b09ed383f7c791c46100f649e1cabda0e3b";
+    };
+
+    meta = with stdenv.lib; {
+      description = "PDF toolkit";
+      homepage = http://pybrary.net/pyPdf;
+      license = licenses.bsd3;
+    };
+  };
+
 }); in pythonPackages
