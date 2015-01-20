@@ -13,7 +13,7 @@
   enableOfficialBranding ? false
 }:
 
-assert stdenv.cc ? libc && stdenv.cc.libc != null;
+assert stdenv.gcc ? libc && stdenv.gcc.libc != null;
 
 let version = "35.0"; in
 

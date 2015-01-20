@@ -35,8 +35,13 @@ stdenv.mkDerivation (rec {
   enableParallelBuilding = true;
 
   crossAttrs = {
+<<<<<<< HEAD
     buildInputs = stdenv.lib.optional (stdenv ? ccCross && stdenv.ccCross.libc ? libiconv)
       stdenv.ccCross.libc.libiconv.crossDrv;
+=======
+    buildInputs = stdenv.lib.optional (stdenv.gccCross.libc ? libiconv)
+      stdenv.gccCross.libc.libiconv.crossDrv;
+>>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
     # Gettext fails to guess the cross compiler
     configureFlags = "CXX=${stdenv.cross.config}-g++";
   };

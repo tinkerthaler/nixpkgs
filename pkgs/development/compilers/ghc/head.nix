@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
   '';
 
   configureFlags = [
-    "--with-gcc=${stdenv.cc}/bin/cc"
+    "--with-gcc=${stdenv.gcc}/bin/gcc"
     "--with-gmp-includes=${gmp}/include" "--with-gmp-libraries=${gmp}/lib"
   ];
 

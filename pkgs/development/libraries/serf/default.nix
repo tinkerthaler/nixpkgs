@@ -18,11 +18,17 @@ stdenv.mkDerivation rec {
 
   buildPhase = ''
     scons PREFIX="$out" OPENSSL="${openssl}" ZLIB="${zlib}" APR="$(echo "${apr}"/bin/*-config)" \
+<<<<<<< HEAD
         APU="$(echo "${aprutil}"/bin/*-config)" CC="${
           if stdenv.isDarwin then "clang" else "${stdenv.cc}/bin/gcc"
         }" ${
           if stdenv.isDarwin then "" else "GSSAPI=\"${kerberos}\""
         }
+=======
+        APU="$(echo "${aprutil}"/bin/*-config)" GSSAPI="${krb5}" CC="${
+          if stdenv.isDarwin then "clang" else "${stdenv.gcc}/bin/gcc"
+        }"
+>>>>>>> parent of 28b6fb6... Change occurrences of gcc to the more general cc
   '';
 
   NIX_CFLAGS_COMPILE = stdenv.lib.optionalString stdenv.isDarwin "-L/usr/lib";
