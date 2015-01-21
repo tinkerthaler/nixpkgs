@@ -12878,4 +12878,19 @@ let
     };
   };
 
+  openid = buildPythonPackage rec {
+    name = "openid-2.2.5";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/p/python-openid/python-openid-2.2.5.tar.gz";
+      sha256 = "92c51c3ecec846cbec4aeff11f9ff47303d4a63f93b0e6ac0ec02a091fed70ef";
+    };
+
+    meta = with stdenv.lib; {
+      description = "OpenID support for servers and consumers";
+      homepage = http://github.com/openid/python-openid;
+      license = licenses.asl20;
+    };
+  };
+
 }); in pythonPackages
