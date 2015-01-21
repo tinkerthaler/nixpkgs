@@ -13004,4 +13004,19 @@ let
     };
   };
 
+  xlwt = buildPythonPackage rec {
+    name = "xlwt-0.7.5";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/x/xlwt/xlwt-0.7.5.tar.gz";
+      sha256 = "9478bd70b86590b9ac2697967c8a10a4917d900636349ca73eeb362a3227423c";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Library for generating spreadsheet files";
+      homepage = http://www.python-excel.org/;
+      license = licenses.bsd3;
+    };
+  };
+
 }); in pythonPackages
