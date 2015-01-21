@@ -12925,4 +12925,51 @@ let
     };
   };
 
+  stdnum = buildPythonPackage rec {
+    name = "stdnum-1.0";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/p/python-stdnum/python-stdnum-1.0.tar.gz";
+      sha256 = "71c72762ccb37dca92bc58062a799acc824595b9e52a0329fb64dd0c24b6c05e";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Parsing, validation and reformating of standard nrs and codes";
+      homepage = http://arthurdejong.org/python-stdnum/;
+      license = licenses.lgpl2Plus;
+    };
+  };
+
+  suds = buildPythonPackage rec {
+    name = "suds-0.4";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/s/suds/suds-0.4.tar.gz";
+      sha256 = "d5524ae523bb9e09c57bcdbd1efae2c287d20603688ea31f6020ed180a489af0";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Parsing, validation and reformating of standard nrs and codes";
+      homepage = https://fedorahosted.org/suds;
+      license = licenses.lgpl3;
+    };
+  };
+
+  vatnumber = buildPythonPackage rec {
+    name = "vatnumber-1.2";
+
+    buildInputs = [ stdnum suds ];
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/v/vatnumber/vatnumber-1.2.tar.gz";
+      sha256 = "4e9e9cabcff6076d8deb8a347edfd5d0ab8cab1ed344fdbe5dd4a6110a2f2c7b";
+    };
+
+    meta = with stdenv.lib; {
+      description = "VAT nr validation";
+      homepage = http://code.google.com/p/vatnumber/;
+      license = licenses.gpl3;
+    };
+  };
+
 }); in pythonPackages
