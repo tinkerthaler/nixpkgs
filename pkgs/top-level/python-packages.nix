@@ -12972,4 +12972,21 @@ let
     };
   };
 
+  vobject = buildPythonPackage rec {
+    name = "vobject-0.8.1c";
+
+    buildInputs = [ dateutil ];
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/v/vobject/vobject-0.8.1c.tar.gz";
+      sha256 = "594113117f2017ed837c8f3ce727616f9053baa5a5463a7420c8249b8fc556f5";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Reading vCard and vCalendar files";
+      homepage = http://vobject.skyhouseconsulting.com/;
+      license = licenses.bsd3;
+    };
+  };
+
 }); in pythonPackages
