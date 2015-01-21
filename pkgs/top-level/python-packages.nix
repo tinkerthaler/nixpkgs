@@ -12893,4 +12893,36 @@ let
     };
   };
 
+  six = buildPythonPackage rec {
+    name = "six-1.9.0";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz";
+      sha256 = "e24052411fc4fbd1f672635537c3fc2330d9481b18c0317695b46259512c91d5";
+    };
+
+    meta = with stdenv.lib; {
+      description = "Python 2/3 compatibility";
+      homepage = http://pypi.python.org/pypi/six/;
+      license = licenses.mit;
+    };
+  };
+
+  qrcode = buildPythonPackage rec {
+    name = "qrcode-5.1";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/q/qrcode/qrcode-5.1.tar.gz";
+      sha256 = "33bdee5e834fc99eb538e1dad198a3a5b70d0a88845629cacf4c592be1ce7f6a";
+    };
+
+    buildInputs = [ six ];
+
+    meta = with stdenv.lib; {
+      description = "QR Code image generator";
+      homepage = https://github.com/lincolnloop/python-qrcode;
+      license = licenses.bsd3;
+    };
+  };
+
 }); in pythonPackages
