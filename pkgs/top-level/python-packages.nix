@@ -12989,4 +12989,19 @@ let
     };
   };
 
+  wsgiref = buildPythonPackage rec {
+    name = "wsgiref-0.1.2";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/w/wsgiref/wsgiref-0.1.2.zip";
+      sha256 = "c7e610c800957046c04c8014aab8cce8f0b9f0495c8cd349e57c1f7cabf40e79";
+    };
+
+    meta = with stdenv.lib; {
+      description = "PEP 333 WSGI reference";
+      homepage = http://cheeseshop.python.org/pypi/wsgiref;
+      license = licenses.psfl;
+    };
+  };
+
 }); in pythonPackages
